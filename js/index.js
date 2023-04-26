@@ -1,10 +1,29 @@
-const btnNext = document.querySelector(".btn-next");
-const formPanel2 = document.querySelector(".form-panel_2");
-const formPanel1 = document.querySelector(".form-panel_1");
+const btnNext = document.querySelectorAll(".btn-next");
+const btnBack = document.querySelectorAll(".btn-back");
+const formPanels = [...document.querySelectorAll(".form-panel")];
 
-btnNext.addEventListener("click", function () {
-  formPanel1.classList.add("hide");
-  formPanel2.classList.add("reveal");
-});
+if (btnNext.length === 0 || btnBack.length === 0 || formPanels.length === 0) {
+  throw new Error("Could not find elements with the given selectors");
+}
 
-console.log("hi");
+for (let i = 0, len = btnNext.length; i < len; i++) {
+  btnNext[i].addEventListener("click", togglePanel);
+  btnBack[i].addEventListener("click", togglePanel);
+}
+
+function togglePanel() {
+  const currentIndex = formPanels.findIndex((panel) =>
+    panel.classList.contains("active")
+  );
+  if (this.classList.contains("btn-next")) {
+    if (currentIndex < formPanels.length - 1) {
+      formPanels[currentIndex].classList.remove("active");
+      formPanels[currentIndex + 1].classList.add("active");
+    }
+  } else if (this.classList.contains("btn-back")) {
+    if (currentIndex > 0) {
+      formPanels[currentIndex].classList.remove("active");
+      formPanels[currentIndex - 1].classList.add("active");
+    }
+  }
+}

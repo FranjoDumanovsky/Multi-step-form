@@ -305,11 +305,20 @@ section {
   display: none;
 }
 
-.form-panel.hide {
+.form-panel_3 {
   display: none;
 }
 
-.form-panel.reveal {
+.form-panel_2 .btn-back,
+.form-panel_3 .btn-back {
+  display: block;
+}
+
+.form-panel {
+  display: none;
+}
+
+.form-panel.active {
   display: flex;
 }
 
@@ -322,21 +331,25 @@ section {
 }
 
 /* CHECKED STYLES */
-.form-plan:has([type=radio]:checked + img),
-.form-plan:has([type=radio]:hover + img) {
+.form-plan:has([type=radio]:checked + img) {
   outline: 1.5px solid hsl(243, 100%, 62%);
   background-color: hsl(231, 100%, 99%);
+}
+
+.form-plan:has([type=radio]:hover + img) {
+  outline: 1.5px solid hsl(243, 100%, 62%);
 }
 
 .form-plan {
   display: flex;
   border-radius: 6px;
   flex-direction: column;
-  padding: 18px 70px 18px 18px;
+  padding: 18px;
+  width: 28%;
   cursor: pointer;
 }
 .form-plan .plan-title {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 .form-plan img {
   width: 40px;
@@ -345,6 +358,7 @@ section {
 .plan-wrapper {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2.625rem;
 }
 
 .price-toggler {
@@ -353,6 +367,7 @@ section {
   align-items: center;
   gap: 1rem;
   padding: 20px;
+  border-radius: 15px;
   background-color: hsl(231, 100%, 99%);
   color: hsl(231, 11%, 63%);
   font-weight: 500;
@@ -366,6 +381,7 @@ section {
   background-color: hsl(213, 96%, 18%);
   border-radius: 20px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .switch::after {
@@ -384,15 +400,15 @@ section {
   left: 20px;
 }
 
-.price-toggler-month {
+.price-toggler:has(.checkbox) .price-toggler-month {
   color: hsl(213, 96%, 18%);
 }
 
-.checkbox:checked .price-toggler-month {
+.price-toggler:has(.checkbox:checked) .price-toggler-month {
   color: hsl(231, 11%, 63%);
 }
 
-.checkbox:checked .price-toggler-year {
+.checkbox:checked ~ .price-toggler-year {
   color: hsl(213, 96%, 18%);
 }
 
