@@ -3,6 +3,8 @@
 // Elements
 const btnNext = document.querySelectorAll(".btn-next");
 const btnBack = document.querySelectorAll(".btn-back");
+const btnSubmit = document.querySelector(".btn-submit");
+
 const formPanels = [...document.querySelectorAll(".form-panel")];
 const steps = [...document.querySelectorAll(".step")];
 
@@ -40,21 +42,31 @@ let phoneInputValidation = false;
 for (let i = 0, len = btnNext.length; i < len; i++) {
   btnNext[i].addEventListener("click", togglePanel);
   btnBack[i].addEventListener("click", togglePanel);
+  btnSubmit.addEventListener("click", togglePanel);
 }
 
+btnSubmit.addEventListener("click", function (event) {
+  event.preventDefault();
+});
+
 // Main function for toggling Panels
-function togglePanel() {
+function togglePanel(event) {
   if (nameInputValidation && emailInputValidation && phoneInputValidation) {
     const currentIndex = formPanels.findIndex((panel) =>
       panel.classList.contains("active")
     );
 
-    if (this.classList.contains("btn-next")) {
+    if (
+      this.classList.contains("btn-next") ||
+      this.classList.contains("btn-submit")
+    ) {
       if (currentIndex < formPanels.length - 1) {
         formPanels[currentIndex].classList.remove("active");
         formPanels[currentIndex + 1].classList.add("active");
         steps[currentIndex].classList.remove("active");
-        steps[currentIndex + 1].classList.add("active");
+        if (this.classList.contains("btn-next")) {
+          steps[currentIndex + 1].classList.add("active");
+        }
       }
     } else if (this.classList.contains("btn-back")) {
       if (currentIndex > 0) {
@@ -228,7 +240,7 @@ function splitValues() {
       const splitPlanValues = planInputs[i].value.split(",");
       planName = splitPlanValues[0];
       planPrice = splitPlanValues[1];
-      console.log(planName, planPrice);
+
       break; // exit loop after finding checked input
     }
   }
@@ -482,8 +494,10 @@ function addAddon() {
     total += addonValueArr[i];
   }
 
-  total += parseInt(planPrice.match(/\d/g).join(""));
-  totalPrice.textContent = total;
+  const planPriceToNumber = parseInt(planPrice.match(/\d/g).join(""));
+  total += planPriceToNumber;
+
+  totalPrice.textContent = `+$${total}/${planToggler.checked ? "yr" : "mo"}`;
 
   addonsInfo.forEach((addon) => {
     if (addon.shouldRender) {
