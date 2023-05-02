@@ -63,33 +63,42 @@
                     <label for="name">Name</label>
                     <input
                       type="text"
+                      id="name"
                       placeholder="e.g. Stephan King"
                       class="form_name"
                     />
+                    <span class="error-message"></span>
                   </div>
                   <div class="form-grp">
                     <label for="email">Email Address</label>
                     <input
                       type="email"
+                      id="email"
                       placeholder="stephenking@lorem.com"
                       class="form_email"
                     />
+                    <span class="error-message"></span>
                   </div>
                   <div class="form-grp">
                     <label for="Phone Number">Phone Number</label>
                     <input
                       type="phone"
+                      id="phone"
                       placeholder="e.g. +1 234 567 890"
-                      class="form_number"
+                      class="form_phone"
                     />
+
+                    <span class="error-message"></span>
                   </div>
+                  <span class="panel-error-message"
+                    >Please fill out all required fields</span
+                  >
                 </div>
               </div>
+              <span class="error-message"></span>
             </div>
             <div class="form-buttons">
-              <span class="btn-back">Go back</span>
               <span class="btn-next">Next Step</span>
-              <button class="btn-submit">Confirm</button>
             </div>
           </div>
           <div class="form-panel form-panel_2">
@@ -101,40 +110,55 @@
 
               <div class="form">
                 <div>
-                  <div class="plan-wrapper">
+                  <div class="plan-wrapper" id="plan-options">
                     <label class="form-plan">
                       <input
                         type="radio"
-                        name="test"
-                        placeholder="1"
-                        value="1"
+                        name="plan"
+                        value=""
                         checked
+                        id="arcade-input-el"
                       />
                       <img src="assets/images/icon-arcade.svg" alt="" />
-                      <span class="plan-title">Arcade</span>
-                      <span class="plan-price">$9/mo</span>
+                      <span class="plan-title" id="arcade-plan-title-el"></span>
+                      <span class="plan-price" id="arcade-plan-price-el"></span>
+                      <span class="plan-discount">2 months free</span>
                     </label>
                     <label class="form-plan">
                       <input
                         type="radio"
-                        name="test"
-                        placeholder="1"
-                        value="1"
+                        name="plan"
+                        value=""
+                        id="advanced-input-el"
                       />
                       <img src="assets/images/icon-advanced.svg" alt="" />
-                      <span class="plan-title">Advanced</span>
-                      <span class="plan-price">$12/mo</span>
+                      <span
+                        class="plan-title"
+                        id="advanced-plan-title-el"
+                      ></span>
+                      <span
+                        class="plan-price"
+                        id="advanced-plan-price-el"
+                      ></span>
+                      <span class="plan-discount">2 months free</span>
                     </label>
                     <label class="form-plan">
                       <input
                         type="radio"
-                        name="test"
-                        placeholder="1"
-                        value="1"
+                        name="plan"
+                        value=""
+                        id="professional-input-el"
                       />
                       <img src="assets/images/icon-pro.svg" alt="" />
-                      <span class="plan-title">Pro</span>
-                      <span class="plan-price">$15/mo</span>
+                      <span
+                        class="plan-title"
+                        id="professional-plan-title-el"
+                      ></span>
+                      <span
+                        class="plan-price"
+                        id="professional-plan-price-el"
+                      ></span>
+                      <span class="plan-discount">2 months free</span>
                     </label>
                   </div>
                   <div class="price-toggler">
@@ -149,59 +173,87 @@
             <div class="form-buttons">
               <span class="btn-back">Go back</span>
               <span class="btn-next">Next Step</span>
-              <button class="btn-submit">Confirm</button>
             </div>
           </div>
           <div class="form-panel form-panel_3">
             <div class="form-container">
-              <h2 class="form-title">Select your plans</h2>
+              <h2 class="form-title">Pick add-ons</h2>
               <p class="form-description">
-                You have the option of monthly or yearly billing.
+                Add-ons help enhance your gaming experience.
               </p>
 
               <div class="form">
                 <div>
-                  <div class="plan-wrapper">
-                    <label class="form-plan">
-                      <input
-                        type="radio"
-                        name="test"
-                        placeholder="1"
-                        value="1"
-                        checked
-                      />
-                      <img src="assets/images/icon-arcade.svg" alt="" />
-                      <span class="plan-title">Arcade</span>
-                      <span class="plan-price">$9/mo</span>
-                    </label>
-                    <label class="form-plan">
-                      <input
-                        type="radio"
-                        name="test"
-                        placeholder="1"
-                        value="1"
-                      />
-                      <img src="assets/images/icon-advanced.svg" alt="" />
-                      <span class="plan-title">Advanced</span>
-                      <span class="plan-price">$12/mo</span>
-                    </label>
-                    <label class="form-plan">
-                      <input
-                        type="radio"
-                        name="test"
-                        placeholder="1"
-                        value="1"
-                      />
-                      <img src="assets/images/icon-pro.svg" alt="" />
-                      <span class="plan-title">Pro</span>
-                      <span class="plan-price">$15/mo</span>
-                    </label>
-                  </div>
-                  <div class="price-toggler">
-                    <span class="price-toggler-month">Monthly</span>
-                    <input type="checkbox" id="toggle" class="checkbox" />
-                    <label for="toggle" class="switch"></label>
-                    <span class="price-toggler-year">Yearly</span>
+                  <div class="add-ons-wrapper">
+                    <div class="add-on-wrapper">
+                      <label class="form-add-on">
+                        <div class="left-side-flex">
+                          <input
+                            type="checkbox"
+                            name="addon"
+                            value=""
+                            id="online-services-input-el"
+                            checked
+                          />
+                          <span class="checkmark"></span>
+                          <div class="add-ons-text">
+                            <span class="add-ons-title">Online Services</span>
+                            <span class="add-ons-desc"
+                              >Access to multiplayer games</span
+                            >
+                          </div>
+                        </div>
+                        <div class="add-ons-price online-services-price">
+                          <span id="online-services-price-el"></span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="add-on-wrapper">
+                      <label class="form-add-on">
+                        <div class="left-side-flex">
+                          <input
+                            type="checkbox"
+                            name="addon"
+                            id="larger-storage-input-el"
+                            value=""
+                          />
+                          <span class="checkmark"></span>
+                          <div class="add-ons-text">
+                            <span class="add-ons-title">Larger storage</span>
+                            <span class="add-ons-desc"
+                              >Extra 1TB of cloud save</span
+                            >
+                          </div>
+                        </div>
+                        <div class="add-ons-price">
+                          <span id="larger-storage-price-el"></span>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="add-on-wrapper">
+                      <label class="form-add-on">
+                        <div class="left-side-flex">
+                          <input
+                            type="checkbox"
+                            name="addon"
+                            id="customizable-profile-input-el"
+                            value=""
+                          />
+                          <span class="checkmark"></span>
+                          <div class="add-ons-text">
+                            <span class="add-ons-title"
+                              >Customizable Profile</span
+                            >
+                            <span class="add-ons-desc"
+                              >Custom theme on your profile</span
+                            >
+                          </div>
+                        </div>
+                        <div class="add-ons-price">
+                          <span id="customizable-profile-price-el"></span>
+                        </div>
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -209,7 +261,54 @@
             <div class="form-buttons">
               <span class="btn-back">Go back</span>
               <span class="btn-next">Next Step</span>
+            </div>
+          </div>
+          <div class="form-panel form-panel_4">
+            <div class="form-container">
+              <h2 class="form-title">Finishing up</h2>
+              <p class="form-description">
+                Double-check everything looks OK before confirming.
+              </p>
+
+              <div class="form">
+                <div class="summary-wrapper">
+                  <div class="gray-background">
+                    <div class="summary-info">
+                      <div class="summary-info-text">
+                        <span class="summary-plan-title"> </span>
+                        <span class="change-plan">Change</span>
+                      </div>
+                      <div class="summary-info-plan-price"></div>
+                    </div>
+
+                    <div class="summary-info">
+                      <div class="summary-add-ons"></div>
+                    </div>
+                  </div>
+
+                  <div class="summary-info total">
+                    <span class="summary-total-title"> Total (per month) </span>
+                    <div class="summary-total-price"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-buttons">
+              <span class="btn-back">Go back</span>
               <button class="btn-submit">Confirm</button>
+            </div>
+          </div>
+          <div class="form-panel form-panel_5">
+            <div class="thank-you-page">
+              <div class="wrapper">
+                <img src="assets/images/icon-thank-you.svg" alt="" />
+                <span class="thank-you-title"> Thank You! </span>
+                <span class="thank-you-description">
+                  Thanks for confirming your subscription! We hope you have fun
+                  using our platform. If you ever need support, please feel free
+                  to email us at support@loremgaming.com.
+                </span>
+              </div>
             </div>
           </div>
         </form>

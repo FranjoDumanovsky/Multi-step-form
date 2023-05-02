@@ -36,9 +36,13 @@ form {
 
 .form-panel {
   height: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.form-panel.active {
+  display: flex;
 }
 
 .form {
@@ -53,6 +57,7 @@ form {
 
   .form-grp {
     margin-bottom: 1.2rem;
+    position: relative;
 
     input {
       width: 100%;
@@ -79,6 +84,18 @@ form {
     }
   }
 }
+.error-message {
+  position: absolute;
+  color: red;
+  right: 0;
+  top: 0;
+}
+
+.panel-error-message {
+  margin-top: 2rem;
+  color: red;
+  display: none;
+}
 
 .form-buttons {
   position: absolute;
@@ -92,46 +109,32 @@ form {
   padding: 15px;
 
   .btn-back {
-    display: none;
     color: $coolGray;
     font-weight: 500;
   }
-  .btn-next {
+  .btn-next,
+  .btn-submit {
     color: $white;
     padding: 10px 20px;
     font-weight: 500;
-    background-color: $marineBlue;
+
     border-radius: 10px;
     margin-left: auto;
   }
+  .btn-next {
+    background-color: $marineBlue;
+  }
 
   .btn-submit {
-    display: none;
+    background-color: $purplishBlue;
+    outline: none;
+    border: none;
   }
 
   @include lg {
     position: relative;
     padding: 0;
   }
-}
-
-.form-panel_2 {
-  display: none;
-}
-.form-panel_3 {
-  display: none;
-}
-
-.form-panel_2 .btn-back,
-.form-panel_3 .btn-back {
-  display: block;
-}
-
-.form-panel {
-  display: none;
-}
-.form-panel.active {
-  display: flex;
 }
 
 /* HIDE RADIO */
@@ -152,6 +155,7 @@ form {
 }
 
 .form-plan {
+  position: relative;
   display: flex;
   border-radius: 6px;
   flex-direction: column;
@@ -225,4 +229,217 @@ form {
 
 .checkbox {
   display: none;
+}
+.plan-title {
+  color: $marineBlue;
+  font-weight: 800;
+}
+.plan-price {
+  color: $coolGray;
+  font-size: 15px;
+}
+.plan-discount {
+  color: $marineBlue;
+  font-size: 13px;
+  display: none;
+}
+
+// add-ons
+.add-ons-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.form-add-on {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid $lightGray;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+.form-add-on:has(input:checked) {
+  background-color: $alabaster;
+  border: 1.5px solid $purplishBlue;
+}
+
+.left-side-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.add-ons-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-ons-title {
+  font-weight: 500;
+  color: $marineBlue;
+}
+.add-ons-desc {
+  font-size: 14px;
+  color: $coolGray;
+}
+.add-ons-price {
+  font-weight: 500;
+  color: $purplishBlue;
+}
+
+.add-on-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  border-radius: 5px;
+  background-color: $white;
+  border: 1px solid $lightGray;
+}
+
+.add-on-wrapper input:checked ~ .checkmark {
+  background-color: $purplishBlue;
+}
+
+.add-on-wrapper .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.add-on-wrapper input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.add-on-wrapper .checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+// Summary Panel
+
+.summary-wrapper {
+  .gray-background {
+    padding: 0 1.2rem;
+    background-color: $alabaster;
+    border-radius: 10px;
+
+    .summary-info:nth-child(2) {
+      border-top: 1px solid $lightGray;
+    }
+  }
+}
+
+.summary-info {
+  padding: 1.2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.total {
+    padding: 1.2rem 1.2rem;
+  }
+
+  .summary-info-text {
+    display: flex;
+    flex-direction: column;
+
+    .summary-plan-title {
+      font-size: 17px;
+      font-weight: 500;
+      color: $marineBlue;
+    }
+    .change-plan {
+      color: $coolGray;
+      text-decoration: underline;
+      font-size: 14px;
+    }
+  }
+
+  .summary-info-plan-price {
+    font-size: 17px;
+    font-weight: 800;
+    color: $marineBlue;
+  }
+
+  .summary-add-ons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.825rem;
+  }
+
+  .summary-add-on {
+    display: flex;
+    justify-content: space-between;
+    .add-on-title {
+      color: $coolGray;
+      font-size: 14px;
+    }
+    .add-on-price {
+      font-weight: 500;
+      font-size: 15px;
+      color: $marineBlue;
+    }
+  }
+
+  .summary-total-title {
+    color: $coolGray;
+    font-size: 14 px;
+  }
+  .summary-total-price {
+    color: $purplishBlue;
+    font-weight: 800;
+    font-size: 18px;
+  }
+}
+
+//Thank you page
+
+.thank-you-page img {
+  max-width: 80px;
+}
+
+.thank-you-page,
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .thank-you-title {
+    color: $marineBlue;
+    font-size: 28px;
+    font-weight: 800;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .thank-you-description {
+    padding: 0 1.5rem;
+    color: $coolGray;
+  }
 }
