@@ -227,15 +227,9 @@ section {
 
 .form-panel {
   height: 100%;
-  min-height: 450px;
   display: none;
   flex-direction: column;
   justify-content: space-between;
-}
-@media (min-width: 420px) {
-  .form-panel {
-    min-height: 100%;
-  }
 }
 
 .form-panel.active {
