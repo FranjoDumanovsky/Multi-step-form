@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   padding-top: 2rem;
-  background: url("../../assets/images/bg-sidebar-mobile.svg");
+  background: url("../assets/images/bg-sidebar-mobile.svg");
   background-repeat: no-repeat;
   background-size: cover;
   @include lg {
@@ -12,7 +12,7 @@
     height: 100%;
     padding-left: 1.5rem;
     border-radius: 10px;
-    background: url("../../assets/images/bg-sidebar-desktop.svg");
+    background: url("../assets/images/bg-sidebar-desktop.svg");
     background-repeat: no-repeat;
     background-size: cover;
   }
