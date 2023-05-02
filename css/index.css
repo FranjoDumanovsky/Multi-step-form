@@ -94,7 +94,6 @@ section {
   display: flex;
   flex-direction: column;
   width: 100%;
-  position: relative;
   background-color: transparent;
 }
 @media (min-width: 1020px) {
@@ -190,9 +189,6 @@ section {
   font-weight: 700;
 }
 
-form {
-  position: relative;
-}
 @media (min-width: 1020px) {
   form {
     padding: 45px 80px 25px 80px;
